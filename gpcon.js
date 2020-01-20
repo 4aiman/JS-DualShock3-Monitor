@@ -61,23 +61,7 @@ function onFrame() {                             // gets repeatedly executed
 				buttEle.setAttribute("id",'button_'+j)		  // set new button's ID so we can get it later and change it's style
 				buttdiv.appendChild(buttEle);                 // add newly created button to the 'container'
 				
-				// now to add SVG-generated graphics to some non-round-shaped buttons
-				if (j==9) {// start					
-					buttEle.innerHTML = '<svg id="button_9_border"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="0,0 30,9 1,18 0,0"></polygon></svg>';
-				}
-				if (j==12) {//up					
-					buttEle.innerHTML = '<svg id="button_12" height="25" width="25" transform="rotate(0)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
-				}
-				if (j==13) {//down					
-					buttEle.innerHTML = '<svg id="button_13" height="25" width="25" transform="rotate(180)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
-				}
-				if (j==14) {//left					
-					buttEle.innerHTML = '<svg id="button_14" height="25" width="25" transform="rotate(270)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
-				}
-				if (j==15) {//right					
-					buttEle.innerHTML = '<svg id="button_15" height="25" width="25" transform="rotate(90)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
-				}				
-				buttons[j] = true; // remember that jth button has been added
+				buttons[j] = true; // // for now all we need is to remember the fact that jth button has been added
 			   
              } else {                                               // this part kick in when jth button has been added already
 				let buttEle = document.getElementById('button_'+j); // we get correnponding element in our HTML document
@@ -104,22 +88,23 @@ function onFrame() {                             // gets repeatedly executed
 					}
 				} else {  // if current button is *not* pressed we should revert it's style
 					if (j==9) {// once again, the 'start' button needs special attention
-						buttEle.innerHTML = '<svg id="button_9_border"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="0,0 30,9 1,18 1,0"></polygon></svg>';
+						buttEle.innerHTML = '<svg id="button_9_border"><linearGradient id="Gradient0" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="rgba(150,150,150,0.5)"/><stop offset="100%" stop-color="rgba(50,50,50,1)"/></linearGradient><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="url(#Gradient0)" points="0,0 30,9 1,18 1,0"></polygon></svg>';				
 					} else {
 						if (j<=11) { // round-shaped buttons can be processed similarly
 							buttEle.style.background='rgba(70,70,70,0.5)';
+							buttEle.style['background-image'] = "linear-gradient(to bottom, rgba(190,190,190,0.25) 0%, rgba(50,50,50,0.25) 100%), linear-gradient(to right, rgba(190,190,190,0.25) 0%, rgba(50,50,50,0.25) 100%)";							
 						}
 						if (j==12) { // and of cource directional buttons: up
-							buttEle.innerHTML = '<svg id="button_12" height="25" width="25" transform="rotate(0)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
+							buttEle.innerHTML = '<svg id="button_12" height="25" width="25" transform="rotate(0)"><linearGradient id="Gradient1" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="rgba(150,150,150,0.5)"/><stop offset="100%" stop-color="rgba(50,50,50,1)"/></linearGradient><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="url(#Gradient1)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
 						}
 						if (j==13) {// down
-							buttEle.innerHTML = '<svg id="button_13" height="25" width="25" transform="rotate(180)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
+							buttEle.innerHTML = '<svg id="button_13" height="25" width="25" transform="rotate(180)"><linearGradient id="Gradient2" x1="1" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="rgba(150,150,150,0.5)"/><stop offset="100%" stop-color="rgba(50,50,50,1)"/></linearGradient><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="url(#Gradient2)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
 						}
 						if (j==14) {// left
-							buttEle.innerHTML = '<svg id="button_14" height="25" width="25" transform="rotate(270)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
+							buttEle.innerHTML = '<svg id="button_14" height="25" width="25" transform="rotate(270)"><linearGradient id="Gradient3" x1="1" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(150,150,150,0.5)"/><stop offset="100%" stop-color="rgba(50,50,50,1)"/></linearGradient><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="url(#Gradient3)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
 						}
 						if (j==15) {// right
-							buttEle.innerHTML = '<svg id="button_15" height="25" width="25" transform="rotate(90)"><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="rgba(70,70,70,0.5)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
+							buttEle.innerHTML = '<svg id="button_15" height="25" width="25" transform="rotate(90)"><linearGradient id="Gradient4" x1="0" x2="1" y1="1" y2="0"><stop offset="0%" stop-color="rgba(150,150,150,0.5)"/><stop offset="100%" stop-color="rgba(50,50,50,1)"/></linearGradient><polygon fill-rule="evenodd" stroke="rgba(50,50,50,0.5)" fill="url(#Gradient4)" points="1,3 3,1 22,1 24,3 24,15 14,24 12,24 1,15"></polygon></svg>';
 						}
 					}
 				}	
