@@ -1,0 +1,265 @@
+body {
+	background-color: brown;
+}
+
+.button {
+	border:1px solid rgba(50,50,50,1);
+	width:31px;
+	height:31px;
+	border-radius:20px;
+	display:inline-block;
+    background: rgba(70,70,70,1);
+	padding:0px;
+	margin:px;
+	text-align:center;
+	vertical-align:middle;
+	font-weight: bold;	
+	position:absolute;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.25), 0px 1px 1px rgba(0,0,0,0.25), 1px 0px 1px rgba(0,0,0,0.25);
+}
+
+.button_4, .button_5, .button_6, .button_7 {	
+	width:35px;
+	height:20px;
+	border-radius:8px;
+}
+
+.button_8 {
+	width:30px;
+	height:15px;
+	border-radius:4px;
+}
+
+
+
+.button::after { 
+	position:relative;
+	color: rgba(250,250,250,1);
+	font-size:13px;
+	font-family: Arial;
+}
+
+.button_0::after {
+	display: none;
+	content:"A";
+	color: rgba(250,250,250,0.5);	
+	font-size:10px;
+	top:34px;
+	left:16px;
+}
+
+.button_1::after {
+	display: none;
+	content:"○";
+	color: rgba(220,120,80,1);
+	font-size:35px;
+	top:-14px;		
+}
+
+.button_2::after {
+	display: none;
+	content:"B"; /*square*/
+	color: rgba(250,250,250,0.5);
+	font-size:10px;
+	top:34px;
+	left:16px;
+}
+
+.button_3::after {
+	display: none;
+	content:"△";/*triangle*/
+	color: rgba(60,200,100,1);
+	font-size:23px;
+	top:-2px;	
+}
+
+.button_4::after {
+	display: none;
+	content:"L1";
+}
+
+.button_5::after {
+	display: none;
+	content:"R1";
+}
+
+.button_6::after {
+	display: none;
+	content:"L2";
+}
+
+.button_7::after {
+	display: none;
+	content:"R2";
+}
+
+.button_10::after {
+	display: none;
+	content:"L3";
+	top:2px;
+}
+
+.button_11::after {
+	display: none;
+	content:"R3";
+	top:2px;
+}
+
+
+.button_12, .button_13, .button_14, .button_15  { 
+	border:0px;
+	background:transparent;
+	height:25px;
+	width:25px;
+ }
+
+.button_12 {
+	left:57px;
+	top:180px;
+}
+.button_13 {
+	left:48px;
+	top:222px;
+}
+
+.button_14 {
+	left:30px;
+	top:198px;
+}
+.button_15 {
+	left:74px;
+	top:206px;
+}
+
+.button_16 {
+	display: none;
+	left:0px;
+	top:0px;
+}
+
+.button_3 {
+	display: none;
+	left:264px;
+	top:218px;
+}
+.button_0 {
+	display: block;
+	left:316px;
+	top:218px;
+}
+
+.button_2 {
+	display: block;
+	left:264px;
+	top:218px;
+}
+
+.button_1 {
+	display: none;
+	left:226px;
+	top:12px;
+}
+
+.button_4 {
+	display: none;
+	left:2px; 
+	top: 1px;
+}
+.button_6 {
+	display: none;
+	left:80px; 
+	top: 1px;
+}
+
+.button_5 {
+	display: none;
+	left:260px; 
+	top: 1px;	
+	
+}
+.button_7 {
+	display: none;
+	left:182px; 
+	top: 1px;	
+}
+
+.button_8 {
+	width:30px;
+	height:10px;
+	border-radius:4px;
+	left:140px;
+	top:230px;	
+	background-color: rgba(30,30,30,1);
+	transform: none;
+}
+
+.button_9 {
+	width:30px;
+	height:10px;
+	border-radius:4px;
+	left:194px;
+	top:230px;	
+	background-color: rgba(300,30,30,1);
+	transform: none;
+}
+
+.button_10 {
+	display: none;
+	position:relative;
+	border:1px solid rgba(250,200,150,1);
+}
+
+.button_11 {
+	display: none;
+	position:relative;
+	border:1px solid rgba(250,200,150,1);
+}
+
+
+#buttons {
+	position:absolute;
+	width: 400px	;
+	height: 400px	;
+	background-image: none;
+}
+
+#style_select {
+	position:absolute;
+	left: 410px;
+}
+
+.axisbox {
+	display:none;
+ }
+	 
+ .axisbox_0 {	
+	 display:none;	 
+ }
+ 
+ .axisbox_1 {
+	 display:none;
+ }
+ 
+ .axis{
+	 display:none;
+ }
+
+
+#controller_SNES {
+	display: none;
+}
+
+#controller_DS {
+	display: none;
+}
+
+#controller_NES {
+	display: block;
+	position: absolute;
+	width:400px;
+	height:400px;
+}
+
+#controller_XBOX {
+	display: none;
+}

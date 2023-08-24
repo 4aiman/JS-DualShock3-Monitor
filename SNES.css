@@ -1,0 +1,235 @@
+body {
+ 	background-color: darkcyan;
+}
+
+.button {
+	border:1px solid rgba(0,0,0,1);
+	width:26px;
+	height:26px;
+	border-radius:13px;
+	display:inline-block;
+    background: rgba(70,70,70,1);
+	padding:0px;
+	margin:px;
+	text-align:center;
+	vertical-align:middle;
+	font-weight: bold;	
+	position:absolute;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.25), 0px 1px 1px rgba(0,0,0,0.25), 1px 0px 1px rgba(0,0,0,0.25);
+}
+
+.button_4, .button_5, .button_6, .button_7 {	
+	width:55px;
+	height:5px;
+	border-radius: 8px 8px 0px 0px;
+}
+
+
+
+
+.button::after { 
+	position:relative;
+	color: rgba(250,250,250,1);
+	font-size:13px;
+	font-family: Arial;
+}
+
+.button_0::after {
+	display: block;
+	content:"B";
+	color: rgb(188, 200, 80);	
+	font-size:22px;
+	top:0px;
+	left:0px;
+}
+
+.button_1::after {
+	display: block;
+	content:"A";
+	color: rgba(250,80,80,1);
+	font-size:22px;
+	top:0px;
+	left:0px;
+}
+
+.button_2::after {
+	display: block;
+	content:"Y"; /*square*/
+	color: rgba(60,200,100,1);
+	font-size:22px;
+	top:0px;
+	left:0px;
+}
+
+.button_3::after {
+	display: block;
+	content:"X";/*triangle*/
+	color: rgba(80,120,200,1);	
+	font-size:22px;
+	top:0px;
+	left:0px;
+}
+
+.button_4::after {
+	 content:""; 
+}
+
+.button_5::after {
+	 content:""; 
+}
+
+
+#button_9_border {
+	position:relative;
+	top:3px;
+}
+
+.button_12, .button_13, .button_14, .button_15  { 
+	border:0px;
+	background:transparent;
+	height:25px;
+	width:25px;
+ }
+
+.button_12 {
+	left:75px;
+	top:170px;
+}
+.button_13 {
+	left:73px;
+	top:207px;
+}
+
+.button_14 {
+	left:55px;
+	top:188px;
+}
+.button_15 {
+	left:94px;
+	top:190px;
+}
+
+.button_16 {
+	display: none;
+	left:0px;
+	top:0px;
+}
+
+.button_3 {
+	display: block;
+	left:296px;
+	top:156px;
+}
+.button_0 {
+	display: block;
+	left:296px;
+	top:214px;
+}
+
+.button_2 {
+	display: block;
+	left:259px;
+	top:185px;
+}
+.button_1 {
+	display: block;
+	left:332px;
+	top:185px;
+}
+
+.button_4 {
+	left:83px; 
+	top: 113px;
+}
+
+.button_5 {
+	left:266px; 
+	top: 113px;	
+	
+}
+
+.button_6 {
+	display: none;	
+}
+
+.button_7 {
+	display: none;	
+}
+
+.button_8 {
+	width:30px;
+	height:8px;
+	border-radius:4px;
+	left:147px;
+	top:206px;	
+	transform: rotate(-37deg);
+}
+
+.button_9 {
+	width:30px;
+	height:8px;
+	border-radius:4px;
+	left:189px;
+	top:206px;	
+	transform: rotate(-37deg);
+}
+
+
+
+#buttons {
+	position:absolute;
+	width: 400px	;
+	height: 400px	;
+	background-image: none;
+}
+
+#style_select {
+	position:absolute;
+	left: 410px;
+}
+
+.axisbox {
+	display:none;
+}
+	 
+ .axisbox_0 {	
+	 display:none;
+}
+ 
+ .axisbox_1 {
+	 position:absolute;
+ }
+ 
+ .axis{
+	 display:none;
+ }
+
+
+#controller_SNES {
+	display: block;
+	visibility: visible;
+	position: absolute;
+	width:400px;
+	height:400px;
+}
+
+#controller_DS {
+	display: none;
+	position: absolute;
+	width:400px;
+	height:400px;
+}
+
+#controller_NES {
+	display: none;
+	position: absolute;
+	width:400px;
+	height:400px;
+}
+
+#controller_XBOX {
+	display: none;
+	position: absolute;
+	width:400px;
+	height:400px;
+}
