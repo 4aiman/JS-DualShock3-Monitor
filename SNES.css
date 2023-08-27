@@ -1,16 +1,15 @@
 body {
- 	background-color: darkcyan;
+	background-color: transparent;
 }
 
 .button {
-	border:1px solid rgba(0,0,0,1);
+	border:1px solid rgba(var(--clr), var(--clg), var(--clb), var(--cla));
 	width:26px;
 	height:26px;
 	border-radius:13px;
 	display:inline-block;
-    background: rgba(70,70,70,1);
 	padding:0px;
-	margin:px;
+	margin-left:42px;
 	text-align:center;
 	vertical-align:middle;
 	font-weight: bold;	
@@ -86,7 +85,6 @@ body {
 
 .button_12, .button_13, .button_14, .button_15  { 
 	border:0px;
-	background:transparent;
 	height:25px;
 	width:25px;
  }
@@ -183,10 +181,6 @@ body {
 	background-image: none;
 }
 
-#style_select {
-	position:absolute;
-	left: 410px;
-}
 
 .axisbox {
 	display:none;
@@ -209,6 +203,7 @@ body {
 	display: block;
 	visibility: visible;
 	position: absolute;
+	left: 50px;
 	width:400px;
 	height:400px;
 }

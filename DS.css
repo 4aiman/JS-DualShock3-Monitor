@@ -1,16 +1,15 @@
 body {
-	background-color: darkslateblue;
+	background-color: transparent;
 }
 
 .button {
-	border:1px solid rgba(50,50,50,1);
+	border:1px solid rgba(var(--clr), var(--clg), var(--clb), var(--cla));
 	width:25px;
 	height:25px;
 	border-radius:13px;
 	display:inline-block;
-    background: rgba(70,70,70,1);
 	padding:0px;
-	margin:px;
+	margin:0px;
 	text-align:center;
 	vertical-align:middle;
 	font-weight: bold;	
@@ -230,10 +229,6 @@ body {
 	background-image: none;
 }
 
-#style_select {
-	position:absolute;
-	left: 410px;
-}
 
 
 .axisbox {

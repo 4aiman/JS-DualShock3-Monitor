@@ -2,19 +2,77 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<style>
+		:root {
+			/* these values are changed in gpcon.js, no use to edit them here */
+			--clr : 0; /* controller lines color - red element   */
+			--clg : 0; /* controller lines color - green element */
+			--clb : 0; /* controller lines color - blue element  */
+			--cla : 1; /* controller lines color - transparency  */
+			--cbr : 0; /* controller base color - red element    */
+			--cbg : 0; /* controller base color - green element  */
+			--cbb : 0; /* controller base color - blue element   */
+			--cba : 1; /* controller base color - transparency   */
+			--bbm : "normal"; /* blend mode for buttons          */
+		}
+		.svg_button, .button {
+			mix-blend-mode : var(--bbm);
+		}
+
+		.controller_select_option {
+			padding: 5px;
+			margin: 5px;
+			cursor: pointer;
+			border: 1px solid transparent;
+		}
+
+		input[type="radio"]+label:hover{ 
+			background-color: rgb(251, 55, 132, 0.5);
+			border: 1px solid rgb(105, 0, 54);
+		}
+
+		input[type="radio"]:checked+label{ 
+			background-color: rgb(251, 255, 132);
+			border: 1px solid black;
+			color: black
+		}
+
+		#buttons_border {
+			position: relative;
+			border: 1px solid red;
+			width: 400px;
+			height: 400px;
+			left: 40px;
+		}
+
+		#buttons {
+			z-index: 150;
+			position:absolute;
+		}
+
+		#darkmode_box, #border_box, label {
+			cursor: pointer;
+		}
+
+	</style>
 </head>
 <body onload="prep()">
-	<div id="controller_SNES">
+	<div id="controller_SNES" style="z-index: -50;">
+		<svg style="position: absolute;" height="400" width="400">
+			<path stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" d="m 115,120 200,0 c 84,-5 120,145 0,160 -44,0 -44,-20 -84,-20 h -64 c -44,0 -44,20 -84,20 -84,0 -120,-145 0,-160 z"> 
+			</path>
+		</svg>
+		
 		<svg style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" 
+			<path stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 310 127 C 408 127 408 273 310 273 C 212 271 212 127 310 127 Z M 322 185 C 338 167 318 143 298 155 L 262 183 C 242 201 264 227 284 215 Z M 358 213 C 374 199 358 173 336 183 L 298 213 C 280 231 302 255 320 243 Z"></path>
 		</svg>
 		<svg style="position: absolute; width: 200px; height: 200px; top: 102px; left: 0px;">
-			<circle stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.0)" cx="87" cy="98" r="45">
+			<circle stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(0,0,0,0.0)" cx="87" cy="98" r="45">
 			</circle>
 		</svg>
 		<svg style="position: absolute; width: 200px; height: 200px; top: 102px; left: 0px;">
-			<circle stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.0)" cx="87" cy="98" r="5">
+			<circle stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(0,0,0,0.0)" cx="87" cy="98" r="5">
 			</circle>
 		</svg>
 		<svg style="position: absolute;" height="25" width="25" transform="rotate(90)">
@@ -24,63 +82,57 @@
 			</linearGradient>
 		</svg>
 		<svg style="position: absolute; top:165px; left:50px;" height="400" width="400">
-			<path fill-rule="evenodd" stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" d="M 26,5 47,5 47,26 68,26 68,47 47,47 47,68 26,68 26,47 5,47 5,26 26,26 26,5 z">
-			</path>
-		</svg>
-
-		<svg style="position: absolute;" height="400" width="400">
-			<path stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.0)" d="m 115,120 200,0 c 84,-5 120,145 0,160 -44,0 -44,-20 -84,-20 h -64 c -44,0 -44,20 -84,20 -84,0 -120,-145 0,-160 z"> 
+			<path fill-rule="evenodd" stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" d="M 26,5 47,5 47,26 68,26 68,47 47,47 47,68 26,68 26,47 5,47 5,26 26,26 26,5 z">
 			</path>
 		</svg>
 	</div>
-	<div id="controller_NES">
-		<svg style="position: absolute; width: 400px; height: 400px; top: 258px; left: 344px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(250,250,250,0.0)" fill="rgba(250,250,250,0.6)" 
+	<div id="controller_NES" style="z-index: -50;">
+
+		<svg style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
+				d="M 172 118 L 392 118 C 398 118 398 118 398 124 L 398 276 C 398 282 398 282 392 282 L 6 282 C 0 282 0 282 0 276 L 0 122 C 0 118 0 118 4 118 Z">
+
+			</path>
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
+				d="M 10 144 L 390 144 L 390 272 L 10 272 Z M 132 216 C 128 216 126 218 126 222 L 126 248 C 126 252 128 254 132 254 L 234 254 C 238 254 240 252 240 248 L 240 222 C 240 218 238 216 234 216 L 132 216 Z M 56 176 C 54 176 52 178 52 180 L 52 202 L 30 202 C 28 202 26 204 26 206 L 26 224 C 26 226 28 228 30 228 L 52 228 L 52 248 C 52 250 54 252 56 252 L 74 252 C 76 252 78 250 78 248 L 78 228 L 100 228 C 102 228 104 226 104 224 L 104 206 C 104 204 102 202 100 202 L 78 202 L 78 180 C 78 178 76 176 74 176 L 56 176 Z M 280 216 C 256 216 256 252 280 252 C 304 252 304 216 280 216 L 280 216 Z M 332 216 C 308 216 308 252 332 252 C 356 252 356 216 332 216 Z">
+			</path>
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
+				d="M 10 144 L 390 144 L 390 272 L 10 272 Z M 126 144 L 126 154 C 126 158 128 160 132 160 L 234 160 C 238 160 240 158 240 154 L 240 144 Z M 126 172 L 126 180 C 126 184 128 186 132 186 L 236 186 C 238 186 240 184 240 182 L 240 172 C 240 168 238 166 234 166 L 132 166 C 128 166 126 168 126 172 Z M 132 192 C 128 192 126 194 126 198 L 126 206 C 126 210 128 212 132 212 L 234 212 C 238 212 240 210 240 206 L 240 198 C 240 194 238 192 234 192 L 132 192 Z M 132 216 C 128 216 126 218 126 222 L 126 248 C 126 252 128 254 132 254 L 234 254 C 238 254 240 252 240 248 L 240 222 C 240 218 238 216 234 216 L 132 216 Z M 132 260 C 128 260 126 262 126 266 L 126 272 L 240 272 L 240 266 C 240 262 238 260 234 260 L 132 260 Z M 262 212 C 260 212 258 214 258 216 L 258 252 C 258 254 260 256 262 256 L 298 256 C 300 256 302 256 302 252 L 302 216 C 302 214 300 212 298 212 L 262 212 Z M 314 212 C 312 212 310 214 310 216 L 310 252 C 310 254 312 256 314 256 L 350 256 C 352 256 354 254 354 252 L 354 216 C 354 214 352 212 350 212 L 314 212 Z M 56 176 C 54 176 52 178 52 180 L 52 202 L 30 202 C 28 202 26 204 26 206 L 26 224 C 26 226 28 228 30 228 L 52 228 L 52 248 C 52 250 54 252 56 252 L 74 252 C 76 252 78 250 78 248 L 78 228 L 100 228 C 102 228 104 226 104 224 L 104 206 C 104 204 102 202 100 202 L 78 202 L 78 180 C 78 178 76 176 74 176 L 56 176 Z">
+			</path>
+
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
+				d="M 56 178 L 74 178 C 74 178 76 178 76 180 L 76 204 L 100 204 C 102 204 102 206 102 206 L 102 224 C 102 224 102 226 100 226 L 76 226 L 76 248 C 76 250 74 250 74 250 L 56 250 C 56 250 54 250 54 248 L 54 226 L 30 226 C 28 226 28 224 28 224 L 28 206 C 28 206 28 204 30 204 L 54 204 L 54 180 C 54 178 56 178 56 178 Z">
+			</path>
+			<!--path style="transform:scale(20)" stroke-width=0.1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" d="M 3.9 8.2 L 22.9 8.2 L 22.9 14.6 L 3.9 14.6 Z M 10 11.8 C 9.8 11.8 9.7 11.9 9.7 12.1 L 9.7 13.4 C 9.7 13.6 9.8 13.7 10 13.7 L 15.1 13.7 C 15.3 13.7 15.4 13.6 15.4 13.4 L 15.4 12.1 C 15.4 11.9 15.3 11.8 15.1 11.8 L 10 11.8 Z M 6.2 9.8 C 6.1 9.8 6 9.9 6 10 L 6 11.1 L 4.9 11.1 C 4.8 11.1 4.7 11.2 4.7 11.3 L 4.7 12.2 C 4.7 12.3 4.8 12.4 4.9 12.4 L 6 12.4 L 6 13.4 C 6 13.5 6.1 13.6 6.2 13.6 L 7.1 13.6 C 7.2 13.6 7.3 13.5 7.3 13.4 L 7.3 12.4 L 8.4 12.4 C 8.5 12.4 8.6 12.3 8.6 12.2 L 8.6 11.3 C 8.6 11.2 8.5 11.1 8.4 11.1 L 7.3 11.1 L 7.3 10 C 7.3 9.9 7.2 9.8 7.1 9.8 L 6.2 9.8 Z">
+			</path-->
+		</svg>
+		<svg style="position: absolute; width: 8px; height: 8px; top: 258px; left: 344px;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(250,250,250,0.0)" fill="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" 
 				d="M 1 1.4 C 1 0.6 2 0.6 2 0.6 L 7 0.6 C 7 0.6 8 0.6 8 1.4 L 8 7.6 L 7 7.6 L 7 4.6 L 2 4.6 L 2 7.6 L 1 7.6 L 1 1.4 
 				   M 2 1.8 L 2 3.6 L 7 3.6 L 7 1.8 C 7 1.6 6.8 1.6 6.8 1.6 L 2.2 1.6 C 2.2 1.6 2 1.6 2 1.8 Z">
 			</path>
 		</svg>
-		<svg style="position: absolute; width: 400px; height: 400px;  top: 258px; left: 284px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(250,250,250,0)" fill="rgba(250,250,250,0.6)" 
+		<svg style="position: absolute; width: 40px; height: 40px;  top: 258px; left: 284px;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(250,250,250,0)" fill="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" 
 				d ="M 9.2 0.6 L 9.2 7.6 L 15.4 7.6 C 15.4 7.6 16.2 7.6 16.2 6.8 L 16.2 4.4 C 16.2 4.4 16.2 4 15.6 4 C 15.6 4 16 4 16 3.6 L 16 1.4 C 16 0.6 15.2 0.6 15.2 0.6 Z 
 				   M 10.2 1.6 L 14.8 1.6 C 14.8 1.6 15 1.6 15 1.8 L 15 3.4 C 15 3.6 14.8 3.6 14.8 3.6 L 10.2 3.6 Z 
 				   M 10.2 4.6 L 15 4.6 C 15 4.6 15.2 4.6 15.2 4.8 L 15.2 6.4 C 15.2 6.4 15.2 6.6 15 6.6 L 10.2 6.6 Z">
 			</path>
 		</svg>
-		<svg style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,1)" fill="rgba(250,250,250,0.1)" 
-				d="M 172 118 L 392 118 C 398 118 398 118 398 124 L 398 276 C 398 282 398 282 392 282 L 6 282 C 0 282 0 282 0 276 L 0 122 C 0 118 0 118 4 118 Z">
-
-			</path>
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(0,0,0,0.15)" 
-				d="M 10 144 L 390 144 L 390 272 L 10 272 Z M 132 216 C 128 216 126 218 126 222 L 126 248 C 126 252 128 254 132 254 L 234 254 C 238 254 240 252 240 248 L 240 222 C 240 218 238 216 234 216 L 132 216 Z M 56 176 C 54 176 52 178 52 180 L 52 202 L 30 202 C 28 202 26 204 26 206 L 26 224 C 26 226 28 228 30 228 L 52 228 L 52 248 C 52 250 54 252 56 252 L 74 252 C 76 252 78 250 78 248 L 78 228 L 100 228 C 102 228 104 226 104 224 L 104 206 C 104 204 102 202 100 202 L 78 202 L 78 180 C 78 178 76 176 74 176 L 56 176 Z M 280 216 C 256 216 256 252 280 252 C 304 252 304 216 280 216 L 280 216 Z M 332 216 C 308 216 308 252 332 252 C 356 252 356 216 332 216 Z">
-			</path>
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" 
-				d="M 10 144 L 390 144 L 390 272 L 10 272 Z M 126 144 L 126 154 C 126 158 128 160 132 160 L 234 160 C 238 160 240 158 240 154 L 240 144 Z M 126 172 L 126 180 C 126 184 128 186 132 186 L 236 186 C 238 186 240 184 240 182 L 240 172 C 240 168 238 166 234 166 L 132 166 C 128 166 126 168 126 172 Z M 132 192 C 128 192 126 194 126 198 L 126 206 C 126 210 128 212 132 212 L 234 212 C 238 212 240 210 240 206 L 240 198 C 240 194 238 192 234 192 L 132 192 Z M 132 216 C 128 216 126 218 126 222 L 126 248 C 126 252 128 254 132 254 L 234 254 C 238 254 240 252 240 248 L 240 222 C 240 218 238 216 234 216 L 132 216 Z M 132 260 C 128 260 126 262 126 266 L 126 272 L 240 272 L 240 266 C 240 262 238 260 234 260 L 132 260 Z M 262 212 C 260 212 258 214 258 216 L 258 252 C 258 254 260 256 262 256 L 298 256 C 300 256 302 256 302 252 L 302 216 C 302 214 300 212 298 212 L 262 212 Z M 314 212 C 312 212 310 214 310 216 L 310 252 C 310 254 312 256 314 256 L 350 256 C 352 256 354 254 354 252 L 354 216 C 354 214 352 212 350 212 L 314 212 Z M 56 176 C 54 176 52 178 52 180 L 52 202 L 30 202 C 28 202 26 204 26 206 L 26 224 C 26 226 28 228 30 228 L 52 228 L 52 248 C 52 250 54 252 56 252 L 74 252 C 76 252 78 250 78 248 L 78 228 L 100 228 C 102 228 104 226 104 224 L 104 206 C 104 204 102 202 100 202 L 78 202 L 78 180 C 78 178 76 176 74 176 L 56 176 Z">
-			</path>
-
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(0,0,0,0.55)" 
-				d="M 56 178 L 74 178 C 74 178 76 178 76 180 L 76 204 L 100 204 C 102 204 102 206 102 206 L 102 224 C 102 224 102 226 100 226 L 76 226 L 76 248 C 76 250 74 250 74 250 L 56 250 C 56 250 54 250 54 248 L 54 226 L 30 226 C 28 226 28 224 28 224 L 28 206 C 28 206 28 204 30 204 L 54 204 L 54 180 C 54 178 56 178 56 178 Z">
-			</path>
-			<!--path style="transform:scale(20)" stroke-width=0.1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" d="M 3.9 8.2 L 22.9 8.2 L 22.9 14.6 L 3.9 14.6 Z M 10 11.8 C 9.8 11.8 9.7 11.9 9.7 12.1 L 9.7 13.4 C 9.7 13.6 9.8 13.7 10 13.7 L 15.1 13.7 C 15.3 13.7 15.4 13.6 15.4 13.4 L 15.4 12.1 C 15.4 11.9 15.3 11.8 15.1 11.8 L 10 11.8 Z M 6.2 9.8 C 6.1 9.8 6 9.9 6 10 L 6 11.1 L 4.9 11.1 C 4.8 11.1 4.7 11.2 4.7 11.3 L 4.7 12.2 C 4.7 12.3 4.8 12.4 4.9 12.4 L 6 12.4 L 6 13.4 C 6 13.5 6.1 13.6 6.2 13.6 L 7.1 13.6 C 7.2 13.6 7.3 13.5 7.3 13.4 L 7.3 12.4 L 8.4 12.4 C 8.5 12.4 8.6 12.3 8.6 12.2 L 8.6 11.3 C 8.6 11.2 8.5 11.1 8.4 11.1 L 7.3 11.1 L 7.3 10 C 7.3 9.9 7.2 9.8 7.1 9.8 L 6.2 9.8 Z">
-			</path-->
-
-
-		</svg>
 	</div>
-	<div id="controller_XBOX">
-		<svg hull style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.15)" 
+	<div id="controller_XBOX" style="z-index: -50;">
+		<svg hull style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px; z-index: -50;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 200 128 L 246 128 L 270 116 L 278 108 L 302 104 L 314 108 L 336 128 L 348 142 L 358 164 L 374 212 C 388 272 374 312 334 312 C 306 308 288.666 292.666 266 284 C 262 290 232 288 228 278 L 172 278 C 170 280 152 292 132 284 C 108.666 293.334 80 312 62 312 C 12 312 14 248 24 212 L 40 164 L 50 142 L 62 128 L 84 108 L 96 104 L 122 110 L 128 116 L 152 128 Z">
 			</path>
 		</svg>
-		<svg hull with holes style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(0,0,0,0.15)" 
+		<svg hull with holes style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px; z-index: -50;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 200 128 L 246 128 L 270 116 L 278 108 L 302 104 L 314 108 L 336 128 L 348 142 L 358 164 L 374 212 C 388 272 374 312 334 312 C 306 308 288.666 292.666 266 284 C 262 290 232 288 228 278 L 172 278 C 170 280 152 292 132 284 C 108.666 293.334 80 312 62 312 C 12 312 14 248 24 212 L 40 164 L 50 142 L 62 128 L 84 108 L 96 104 L 122 110 L 128 116 L 152 128 Z M 52 182 C 36 210 84 254 122 216 C 148 184 80 144 52 182 Z M 218 232 C 190 266 250 294 284 264 C 314 230 244 206 218 232 Z M 38 170 L 58 156 C 132 126 126 172 170 172 L 234 172 C 266 170 278 128 348 156 L 360 170 L 358 164 L 346 148 C 326 140 316 136 294 136 C 268 136 260 158 234 160 L 170 160 C 148 162 126 136 104 136 C 76 138 74 140 52 148 L 40 164 L 38 170 Z M 280 192 C 262 196 270 212 282 210 C 300 208 292 190 280 192 Z M 308 216 C 294 216 294 236 310 234 C 322 234 328 214 308 216 Z M 338 190 C 324 196 328 212 344 208 C 354 204 358 186 338 190 Z M 308 166 C 296 172 300 192 316 186 C 330 182 326 160 308 166 Z M 160 194 C 148 194 146 206 160 208 C 170 208 174 196 160 194 Z M 240 194 C 228 194 228 208 240 208 C 250 208 256 194 240 194 Z">
 			</path>
 		</svg>
-		<svg button bg style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(0,0,0,0.25)" 
+		<svg button bg style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px; z-index: -50;">
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,0)" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 70 190 C 46 214 86 246 112 214 C 126 188 88 174 70 190 Z 
 				M 234 242 C 210 264 250 290 272 268 C 290 244 252 226 234 242 Z 
 				M 278 188 C 258 194 270 212 282 210 C 300 208 296 186 278 188 Z 
@@ -93,7 +145,7 @@
 				M 154 278 C 160 276 166 274 168 266 C 166 274 160 276 154 278 Z
 				M 168 252 C 164 244 158 240 152 240 C 158 240 164 244 168 252 Z">
 			</path>
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.25)" 
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 134 240 C 124 240 118 250 118 252 C 118 250 124 240 134 240 Z
 				   M 120 266 C 124 274 128 276 136 278 C 128 276 124 274 120 266 Z
 				   M 154 278 C 160 276 166 274 168 266 C 166 274 160 276 154 278 Z 
@@ -105,32 +157,57 @@
 		</svg>
 
 		<svg up style="position: absolute; width: 400px; height: 400px; top: 0px; left: 0px;">
-			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(0,0,0,1)" fill="rgba(0,0,0,0.25)" 
+			<path style="transform:scale(1)" stroke-width=1 stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" 
 				d="M 136 238 C 140 236 146 236 150 238 C 152 242 152 248 154 250 C 159 253 164 253 170 254 C 172 258 171.9 262 170 266 C 165 266 161 266 156 268 C 154 270 152 276 152 280 C 148 282 144 282 138 280 C 134 276 136 270 132 268 C 127 265 122 266 118 266 C 114 262 114 258 116 254 C 121 253 127 253 132 250 C 134 248 134 240 136 238 Z">
 			</path>
 		</svg>
 
-		
-		
-
-		
-		
-
-
-		
-		
-
 	</div>
-<div id="buttons"></div>
-<script type="text/javascript" src="gpcon.js"></script>
-<div id="style_select_wrapper">
-	<select id="style_select">
-		<option id="DS_option"  value="DS">DS</option>
-		<option id="NES_option"  value="NES">NES</option>
-		<option id="SNES_option" value="SNES">SNES</option>
-		<option id="XBOX_option" value="XBOX">XBox</option>
-	</select>
-</div>
+	
+	
+	<div id="page" style="	top:15px; position:absolute; z-index: -100; background: (255, 255, 255, 1)">
+		
 
+		<script type="text/javascript" src="gpcon.js"></script>
+
+		<div id="controls" style="position:absolute; top: 0px; left: 500px; width:300px; padding: 0px; font-family: Arial; color: black; mix-blend-mode: difference; user-select: none;">
+			<div id="style_select_wrapper">
+				<div style="text-align: right; float: left;"><label for="darkmode_box">Dark mode:</label><input id="darkmode_box" type="checkbox" ></input></div>
+				<div style="text-align: right; float: right;"><label for="border_box">Show border:</label><input id="border_box" type="checkbox"></input></div>
+				<br>
+				<br>
+				<fieldset id="style_select">		
+						<legend>Controller type:</legend>			
+						<input type="radio" id="DS_option"   name="style_select_options" value="DS"   style="display: none;"></input> <label class="controller_select_option" for="DS_option">&nbsp;DS</label>
+						<input type="radio" id="NES_option"  name="style_select_options" value="NES"  style="display: none;"></input> <label class="controller_select_option" for="NES_option">&nbsp;NES</label>
+						<input type="radio" id="SNES_option" name="style_select_options" value="SNES" style="display: none;"></input> <label class="controller_select_option" for="SNES_option">&nbsp;SNES</label>
+						<input type="radio" id="XBOX_option" name="style_select_options" value="XBOX" style="display: none;"></input> <label class="controller_select_option" for="XBOX_option">&nbsp;XBox</label>
+				</fieldset>
+				<br>
+				<div id="color_ramps_base">
+					Base Color:
+					<div id="color_base" style="height:50px; border:1px solid black; background-color: rgba(170, 55, 10, 1);"></div>
+					<table style="width:100%;">
+						<tr><td>Red		</td> <td><input id="red_slider_base"	type="range" max="255", min="0" style="width:100%;" value="170"></input></td>	<td style="width:1px;"><input id="red_input_base"		style="width:30px; text-align: center;" value="170"></input></td></tr>
+						<tr><td>Green	</td> <td><input id="green_slider_base"	type="range" max="255", min="0" style="width:100%;" value="55"></input></td>	<td style="width:1px;"><input id="green_input_base"	style="width:30px; text-align: center;" value="55"></input></td></tr>
+						<tr><td>Blue	</td> <td><input id="blue_slider_base"	type="range" max="255", min="0" style="width:100%;" value="10"></input></td>	<td style="width:1px;"><input id="blue_input_base"		style="width:30px; text-align: center;" value="10"></input></td></tr>
+						<tr><td>Alpha	</td> <td><input id="alpha_slider_base"	type="range" max="100", min="0" style="width:100%;" value="100"></input></td>	<td style="width:1px;"><input id="alpha_input_base"	style="width:30px; text-align: center;" value="1"></input></td></tr>
+					</table>
+				</div>
+				<br><br>
+				<div id="color_ramps_lines">
+					Lines Color:
+					<div id="color_lines" style="height:50px; border:1px solid black; background-color: rgba(30, 30, 30, 1);"></div>
+					<table style="width:100%;">
+						<tr><td>Red		</td> <td><input id="red_slider_lines"		type="range" max="255", min="0" style="width:100%;" value="170"></input></td>	<td style="width:1px;"><input id="red_input_lines"		style="width:30px; text-align: center;" value="170"></input></td></tr>
+						<tr><td>Green	</td> <td><input id="green_slider_lines"	type="range" max="255", min="0" style="width:100%;" value="55"></input></td>	<td style="width:1px;"><input id="green_input_lines"	style="width:30px; text-align: center;" value="55"></input></td></tr>
+						<tr><td>Blue	</td> <td><input id="blue_slider_lines"		type="range" max="255", min="0" style="width:100%;" value="10"></input></td>	<td style="width:1px;"><input id="blue_input_lines"	style="width:30px; text-align: center;" value="10"></input></td></tr>
+						<tr><td>Alpha	</td> <td><input id="alpha_slider_lines"	type="range" max="100", min="0" style="width:100%;" value="100"></input></td>	<td style="width:1px;"	><input id="alpha_input_lines"	style="width:30px; text-align: center;" value="1"></input></td></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="buttons"><div id="buttons_border"></div></div>
 </body>
 </html>
