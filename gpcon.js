@@ -78,7 +78,6 @@ function prep() {
 	border_box.addEventListener("change", border_box_change) 
 		function border_box_change(event) {			
 			let show_buttons_border = border_box.checked
-			console.log(show_buttons_border)
 			if (show_buttons_border){
 				buttons_border_element.style.border = "1px solid red"
 			} else {
@@ -192,8 +191,7 @@ function prep() {
 		XBOX_option.addEventListener("click", style_change)
 	
 	// this changes style by deleting an old <link> element and creating a new one
-	function style_change(event) {		
-		console.log("sdd")
+	function style_change(event) {
 		let head = document.getElementsByTagName( "head" )[0]
 		
 		for (let child of head.children) {
@@ -230,9 +228,15 @@ function prep() {
 	lines_color_change()
 	darkmode_change()
 	border_box_change()
+
+
 }
 
 
+function consent(){
+	let gamepads = navigator.getGamepads();
+	console.log(gamepads)
+}
 
 
 let buttons = []; // remembers if button was added
@@ -245,6 +249,7 @@ function onFrame() {                             // gets repeatedly executed
 	let gamepads = navigator.getGamepads();      // this gets *all* gamepads that your browser was able to detect
 	                                             // note: gamepad may stay undetected until you press a button on it
 	let gp = gamepads[0];                        // we start with the 1st gamepad
+
 	if (!gp) {                                   // but browsers can detect some NULL devices, so we check if there's really something
 		for (i = 0; i < gamepads.length; i++) {  // cycling and checking every other gamepad seems good enough 	 
 			gp = gamepads[i];                    // we get a gemapad
@@ -263,6 +268,7 @@ function onFrame() {                             // gets repeatedly executed
 
 	if (typeof gp === "undefined") {                     // seems unnecessary, but hey, we need to be sure a gamepad exists  
 	} else {                                             // at this point gamepad is properly detected
+		gp.mapping = "standard"
 		let buttdiv = document.getElementById('buttons')  // so, we get our container element (see index.html) and add 'buttons' to it
 		for (j = 0; j < gp.buttons.length; j++) {         // we cycle through all detected buttons and add those to a 'buttons' array
             if (typeof buttons[j] === "undefined") {     // if jth button isn't added yet, we will do just that

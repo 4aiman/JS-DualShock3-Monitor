@@ -55,8 +55,10 @@
 		}
 
 	</style>
+	<script type="text/javascript" src="./gpcon.js"></script>
 </head>
 <body onload="prep()">
+	<!--button onclick="consent()">consent</button-->
 	<div id="controller_SNES" style="z-index: -50;">
 		<svg style="position: absolute;" height="400" width="400">
 			<path stroke="rgba(var(--clr), var(--clg), var(--clb), var(--cla))" fill="rgba(var(--cbr), var(--cbg), var(--cbb), var(--cba))" d="m 115,120 200,0 c 84,-5 120,145 0,160 -44,0 -44,-20 -84,-20 h -64 c -44,0 -44,20 -84,20 -84,0 -120,-145 0,-160 z"> 
@@ -166,10 +168,6 @@
 	
 	
 	<div id="page" style="	top:15px; position:absolute; z-index: -100; background: (255, 255, 255, 1)">
-		
-
-		<script type="text/javascript" src="gpcon.js"></script>
-
 		<div id="controls" style="position:absolute; top: 0px; left: 500px; width:300px; padding: 0px; font-family: Arial; color: black; mix-blend-mode: difference; user-select: none;">
 			<div id="style_select_wrapper">
 				<div style="text-align: right; float: left;"><label for="darkmode_box">Dark mode:</label><input id="darkmode_box" type="checkbox" ></input></div>
